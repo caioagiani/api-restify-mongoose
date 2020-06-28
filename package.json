@@ -1,0 +1,19 @@
+{
+  "name": "restify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "restify": "^8.5.1"
+  },
+  "devDependencies": {
+    "@types/restify": "^8.4.2",
+    "nodemon": "^2.0.4"
+  }
+}
