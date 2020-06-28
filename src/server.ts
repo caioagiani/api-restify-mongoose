@@ -10,6 +10,7 @@ class Server {
     await connect(environments.db.url, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true,
     });
   }
 
