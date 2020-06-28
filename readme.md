@@ -1,3 +1,5 @@
+<img width="120" style="margin-top: 20px" src="http://restify.com/img/logo-homepage.svg" alt="API-restify">
+
 ## TypeScript API using Restify with Mongoose
 
 - Install TypeScript global `npm i -g typescript`
@@ -5,7 +7,7 @@
 - TypeScript compile: `yarn compile` ou `npm run compile`
 - Start application: `yarn dev` ou `npm run dev`.
 
----
+## Routes
 
 - [x] Request findAll Users:
 
