@@ -40,6 +40,18 @@ application.get("/users/:id");
 }
 ```
 
+- [x] Request Create User:
+
+```javascript
+application.post("/users");
+
+{
+	"name": "Caio Agiani",
+	"email": "caio.agiani14@gmail.com",
+	"password": "123"
+}
+```
+
 ## Contato
 
 - [LinkedIn](https://www.linkedin.com/in/caioagiani/)
