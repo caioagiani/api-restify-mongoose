@@ -1,10 +1,13 @@
 import { Router } from "../common/router";
 import * as restify from "restify";
+import { User } from "./users.model";
 
 class UserRouter extends Router {
   applyRoutes(application: restify.Server) {
-    application.get("/users", (req, res, next) => {
-      res.json({ message: "Router Users" });
+    application.get("/users", async (req, res) => {
+      const users = await User.findAll();
+
+      return res.json(users);
     });
   }
 }

@@ -1,11 +1,30 @@
-###TypeScript API using Restify with Mongoose
+## TypeScript API using Restify with Mongoose
 
-- [x] Listar usuários:
+Request:
 
 ```javascript
-application.get("/users", (req, res, next) => {
-  res.json({ message: "Router Users" });
+application.get("/users", (req, res) => {
+    const users = await User.findAll();
+
+    return res.json(users);
 });
+```
+
+Response:
+
+```javascript
+[
+  {
+    id: 1,
+    name: "Caio Agiani",
+    email: "caio.agiani14@gmail.com",
+  },
+  {
+    id: 2,
+    name: "Caio Henrique",
+    email: "agianicaio@gmail.com",
+  },
+];
 ```
 
 ## Contato
