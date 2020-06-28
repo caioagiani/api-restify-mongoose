@@ -1,5 +1,12 @@
 ## TypeScript API using Restify with Mongoose
 
+- Install TypeScript global `npm i -g typescript`
+- Install dependencies: `yarn install` ou `npm install`
+- TypeScript compile: `yarn compile` ou `npm run compile`
+- Start application: `yarn dev` ou `npm run dev`.
+
+---
+
 - [x] Request findAll Users:
 
 ```javascript

@@ -1,14 +1,23 @@
 {
   "name": "restify",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
   "main": "index.js",
+  "description": "API with Restify",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/caioagiani"
+  },
+  "author": {
+    "name": "Caio Agiani",
+    "email": "caio.agiani14@gmail.com",
+    "url": "https://www.linkedin.com/in/caioagiani"
+  },
   "scripts": {
+    "compile": "tsc -w",
     "dev": "nodemon dist/index.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "restify": "^8.5.1"
   },
