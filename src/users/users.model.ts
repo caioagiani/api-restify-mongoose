@@ -7,4 +7,12 @@ export class User {
   static findAll(): Promise<any[]> {
     return Promise.resolve(users);
   }
+
+  static findById(id: Number): Promise<any> {
+    return new Promise((resolve) => {
+      const filtered = users.filter((user) => user.id == id);
+
+      resolve(filtered[0]);
+    });
+  }
 }

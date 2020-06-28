@@ -9,6 +9,18 @@ class UserRouter extends Router {
 
       return res.json(users);
     });
+
+    application.get("/users/:id", async (req, res) => {
+      const { id } = req.params;
+      const user = await User.findById(id);
+
+      if (!user) {
+        res.status(400);
+        return res.json({ error: "User not found" });
+      }
+
+      return res.json(user);
+    });
   }
 }
 

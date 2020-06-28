@@ -1,18 +1,10 @@
 ## TypeScript API using Restify with Mongoose
 
-Request:
+- [x] Request findAll Users:
 
 ```javascript
-application.get("/users", (req, res) => {
-    const users = await User.findAll();
+application.get("/users");
 
-    return res.json(users);
-});
-```
-
-Response:
-
-```javascript
 [
   {
     id: 1,
@@ -25,6 +17,18 @@ Response:
     email: "agianicaio@gmail.com",
   },
 ];
+```
+
+- [x] Request findById User:
+
+```javascript
+application.get("/users/:id");
+
+{
+  "id": 1,
+  "name": "Caio Agiani",
+  "email": "caio.agiani14@gmail.com"
+}
 ```
 
 ## Contato
