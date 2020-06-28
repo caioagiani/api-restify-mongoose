@@ -19,9 +19,11 @@
   "keywords": [],
   "license": "MIT",
   "dependencies": {
+    "mongoose": "^5.9.20",
     "restify": "^8.5.1"
   },
   "devDependencies": {
+    "@types/mongoose": "^5.7.28",
     "@types/restify": "^8.4.2",
     "nodemon": "^2.0.4"
   }

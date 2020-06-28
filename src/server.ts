@@ -1,9 +1,17 @@
 import * as restify from "restify";
 import { environments } from "./common/environment";
 import { Router } from "./common/router";
+import { connect } from "mongoose";
 
 class Server {
   application: restify.Server;
+
+  async initializeDb() {
+    await connect(environments.db.url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+  }
 
   initRoutes(routers: Router[]): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -30,6 +38,7 @@ class Server {
 
   async bootstrap(routers: Router[] = []): Promise<Server> {
     await this.initRoutes(routers);
+    await this.initializeDb();
 
     return this;
   }
