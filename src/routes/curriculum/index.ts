@@ -1,7 +1,7 @@
 import { Server } from "restify";
 
-import { Router } from "../common/router";
-import { CurriculumController } from "../controller/CurriculumController";
+import { Router } from "../../common/router";
+import { CurriculumController } from "../../controller/CurriculumController";
 
 class CurriculumRouter extends Router {
   signRoutes(app: Server) {

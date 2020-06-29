@@ -1,7 +1,7 @@
 import { Server } from "restify";
 
-import { Router } from "../common/router";
-import { UserController } from "../controller/UserController";
+import { Router } from "../../common/router";
+import { UserController } from "../../controller/UserController";
 
 class UserRouter extends Router {
   signRoutes(app: Server) {
