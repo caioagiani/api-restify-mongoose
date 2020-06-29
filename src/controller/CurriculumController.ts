@@ -5,11 +5,7 @@ import { User } from "../model/User";
 
 class CurriculumClass {
   async index(_req: Request, res: Response) {
-    const allCurriculum = await Curriculum.find().populate("user", [
-      "_id",
-      "name",
-      "email",
-    ]);
+    const allCurriculum = await Curriculum.find();
 
     return res.json(allCurriculum);
   }

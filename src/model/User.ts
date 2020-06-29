@@ -30,6 +30,7 @@ const UserSchema = new Schema(
     curriculum: {
       type: Schema.Types.ObjectId,
       ref: "Curriculum",
+      required: true,
     },
   },
   {
