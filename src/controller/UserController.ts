@@ -1,9 +1,10 @@
-import User from "../model/User";
 import { Request, Response } from "restify";
 
-class UserController {
-  async index(req: Request, res: Response) {
-    const users = await User.find();
+import { User } from "../model/User";
+
+class UserClass {
+  async index(_req: Request, res: Response) {
+    const users = await User.find().populate("curriculum", ["_id", "name"]);
 
     return res.json(users);
   }
@@ -44,4 +45,4 @@ class UserController {
   }
 }
 
-export default new UserController();
+export const UserController = new UserClass();

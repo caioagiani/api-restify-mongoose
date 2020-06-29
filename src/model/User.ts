@@ -1,13 +1,16 @@
-import * as mongoose from "mongoose";
-import * as bcryptjs from "bcryptjs";
+import { Types, Schema, Document, model } from "mongoose";
+import { hashSync } from "bcryptjs";
 
-interface IUser extends mongoose.Document {
+import { Curriculum } from "./Curriculum";
+
+interface IUser extends Document {
   name?: string;
   email?: string;
   password?: string;
+  curriculum?: Types.ObjectId | typeof Curriculum;
 }
 
-const UserSchema = new mongoose.Schema(
+const UserSchema = new Schema(
   {
     name: {
       type: String,
@@ -16,6 +19,7 @@ const UserSchema = new mongoose.Schema(
     email: {
       type: String,
       unique: true,
+      lowercase: true,
       required: true,
     },
     password: {
@@ -23,22 +27,26 @@ const UserSchema = new mongoose.Schema(
       select: false,
       required: true,
     },
+    curriculum: {
+      type: Schema.Types.ObjectId,
+      ref: "Curriculum",
+    },
   },
   {
     timestamps: true,
   }
 );
 
-UserSchema.pre("save", async function () {
-  const user: IUser = this;
+UserSchema.pre("save", function () {
+  let user: IUser = this;
 
-  user.password = await bcryptjs.hash(user.password, 1);
+  user.password = hashSync(user.password, 1);
 });
 
-UserSchema.pre("updateOne", async function () {
-  const pass = this.getUpdate().password;
+UserSchema.pre("updateOne", function () {
+  let pass = this.getUpdate().password;
 
-  if (pass) this.getUpdate().password = bcryptjs.hashSync(pass, 1);
+  if (pass) pass = hashSync(pass, 1);
 });
 
-export default mongoose.model<IUser>("User", UserSchema);
+export const User = model<IUser>("User", UserSchema);

@@ -1,5 +1,5 @@
-import * as restify from "restify";
+import { Server } from "restify";
 
 export abstract class Router {
-  abstract applyRoutes(application: restify.Server);
+  abstract applyRoutes(app: Server): any;
 }

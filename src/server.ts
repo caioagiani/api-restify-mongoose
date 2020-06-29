@@ -1,44 +1,43 @@
-import * as restify from "restify";
+import { createServer, plugins, Server } from "restify";
 import { environments } from "./common/environment";
 import { Router } from "./common/router";
 import { connect } from "mongoose";
 
-class Server {
-  application: restify.Server;
+class ServerHandler {
+  app: Server;
 
   async initializeDb() {
     await connect(environments.db.url, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
+      useFindAndModify: false,
     });
   }
 
   initRoutes(routers: Router[]): Promise<any> {
     return new Promise((resolve, reject) => {
       try {
-        this.application = restify.createServer({
+        this.app = createServer({
           name: "restify-api",
           version: "0.1.0",
         });
 
-        this.application.use(restify.plugins.queryParser());
-        this.application.use(restify.plugins.bodyParser());
+        this.app.use(plugins.queryParser());
+        this.app.use(plugins.bodyParser());
 
         for (let router of routers) {
-          router.applyRoutes(this.application);
+          router.applyRoutes(this.app);
         }
 
-        this.application.listen(environments.server.port, () =>
-          resolve(this.application)
-        );
+        this.app.listen(environments.server.port, () => resolve(this.app));
       } catch (error) {
         reject(error);
       }
     });
   }
 
-  async bootstrap(routers: Router[] = []): Promise<Server> {
+  async bootstrap(routers: Router[] = []): Promise<ServerHandler> {
     await this.initRoutes(routers);
     await this.initializeDb();
 
@@ -46,4 +45,4 @@ class Server {
   }
 }
 
-export default new Server();
+export const server = new ServerHandler();

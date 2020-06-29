@@ -1,14 +1,14 @@
 import { Router } from "../common/router";
-import * as restify from "restify";
+import { Server } from "restify";
 
-import UserController from "../controller/UserController";
+import { UserController } from "../controller/UserController";
 
 class UserRouter extends Router {
-  applyRoutes(application: restify.Server) {
-    application.get("/users", UserController.index);
-    application.get("/users/:id", UserController.show);
-    application.post("/users", UserController.store);
+  applyRoutes(app: Server) {
+    app.get("/users", UserController.index);
+    app.get("/users/:id", UserController.show);
+    app.post("/users", UserController.store);
   }
 }
 
-export default new UserRouter();
+export const usersRoute = new UserRouter();
