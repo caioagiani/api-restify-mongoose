@@ -46,9 +46,9 @@ application.get("/users/:id");
 application.post("/users");
 
 {
-	"name": "Caio Agiani",
-	"email": "caio.agiani14@gmail.com",
-	"password": "123"
+  "name": "Caio Agiani",
+  "email": "caio.agiani14@gmail.com",
+  "password": "123"
 }
 ```
 
