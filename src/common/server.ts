@@ -1,7 +1,8 @@
 import { createServer, plugins, Server } from "restify";
-import { environments } from "./common/environment";
-import { Router } from "./common/router";
 import { connect } from "mongoose";
+
+import { environments } from "./environment";
+import { Router } from "./router";
 
 class ServerHandler {
   app: Server;
@@ -27,7 +28,7 @@ class ServerHandler {
         this.app.use(plugins.bodyParser());
 
         for (let router of routers) {
-          router.applyRoutes(this.app);
+          router.signRoutes(this.app);
         }
 
         this.app.listen(environments.server.port, () => resolve(this.app));

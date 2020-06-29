@@ -1,9 +1,10 @@
 import { Types, Schema, model, Document } from "mongoose";
+
 import { User } from "./User";
 
 interface ICurriculum extends Document {
-  name?: string;
-  user?: Types.ObjectId | typeof User;
+  name: string;
+  user: Types.ObjectId | typeof User;
 }
 
 const CurriculumSchema = new Schema({

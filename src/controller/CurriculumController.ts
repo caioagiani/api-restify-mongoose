@@ -27,7 +27,7 @@ class CurriculumClass {
       return res.json(checkCv);
     } catch (error) {
       res.status(400);
-      return res.json({ error: "There was an error" });
+      return res.json({ error: "There was an error." });
     }
   }
 
@@ -41,17 +41,18 @@ class CurriculumClass {
       const checkCv = await Curriculum.find({ user });
 
       if (checkCv.length > 0) {
-        return res.json({ error: "You already have a registered resume" });
+        res.status(400);
+        return res.json({ error: "You already have a registered resume." });
       }
 
       const { _id } = await Curriculum.create({ name, user });
 
       await User.findOneAndUpdate({ _id: user }, { curriculum: _id });
 
-      return res.json({ ...{ id: _id }, message: "Success" });
+      return res.json({ ...{ id: _id }, message: "success" });
     } catch (error) {
       res.status(400);
-      return res.json({ error: "There was an error" });
+      return res.json({ error: "There was an error." });
     }
   }
 }

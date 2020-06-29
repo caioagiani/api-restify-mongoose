@@ -1,5 +1,5 @@
 import { Server } from "restify";
 
 export abstract class Router {
-  abstract applyRoutes(app: Server): any;
+  abstract signRoutes(app: Server): any;
 }

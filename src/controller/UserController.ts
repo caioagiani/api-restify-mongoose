@@ -15,14 +15,10 @@ class UserClass {
     try {
       const user = await User.findById(id);
 
-      if (!user) {
-        res.status(400);
-        return res.json({ error: "User not found" });
-      }
-
       return res.json(user);
     } catch (error) {
-      return res.json({ error: "User does not exist" });
+      res.status(400);
+      return res.json({ error: "User not found." });
     }
   }
 
@@ -30,17 +26,14 @@ class UserClass {
     const { email } = req.body;
 
     try {
-      const checkUser = await User.findOne({ email });
+      await User.findOne({ email });
 
-      if (checkUser) return res.json({ error: "User already exists" });
-
-      const user = await User.create(req.body);
-
-      const { _id } = user;
+      const { _id } = await User.create(req.body);
 
       return res.json({ _id, email });
     } catch (error) {
-      return res.json({ error });
+      res.status(400);
+      return res.json({ error: "User already exists." });
     }
   }
 }

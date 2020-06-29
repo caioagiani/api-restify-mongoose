@@ -1,10 +1,10 @@
-import { server } from "./server";
+import { server } from "./common/server";
 
-import { usersRoute } from "./users/users.routes";
-import { curriculumRoute } from "./users/curriculum.routes";
+import { UserRoutes } from "./users/UserRoute";
+import { CurriculumRoutes } from "./users/CurriculumRoute";
 
 (async () => {
-  await server.bootstrap([usersRoute, curriculumRoute]);
+  await server.bootstrap([UserRoutes, CurriculumRoutes]);
 
   console.log({ server: server.app.address() });
 })();
